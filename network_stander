@@ -1,0 +1,30 @@
+
+config interface 'loopback'
+	option ifname 'lo'
+	option proto 'static'
+	option ipaddr '127.0.0.1'
+	option netmask '255.0.0.0'
+
+config globals 'globals'
+	option ula_prefix 'fd08:54e2:ee22::/48'
+
+config interface 'lan'
+	option ifname 'eth0'
+	option proto 'static'
+	option ipaddr '192.168.1.1'
+	option netmask '255.255.252.0'
+	option ip6assign '60'
+	option auto '1'
+
+config interface 'Lan_Out'
+	option proto 'dhcp'
+	option ifname 'eth1'
+	option force_link '1'
+	option hostname 'Xiaomi_3'
+	option macaddr '32:60:1A:1B:91:58'
+
+config route 'default'
+	option interface 'Lan_Out'
+	option target '0.0.0.0/0'
+	option table '0'
+	option gateway '10.3.255.254'
